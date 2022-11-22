@@ -86,7 +86,6 @@ npx tsc --init
 # Adding Rollup
 
 > <p> It's very similar to webpack in that it is a tool for bundling individual Javascript modules into a single source that a browser is better able to understand.</p>
-> <br/>
 
 <p>Typically webpack is used for bundling applications while rollup is particularly suited for bundling libraries </p>
 <br/>
@@ -99,11 +98,11 @@ npx tsc --init
 npm install rollup @rollup/plugin-node-resolve @rollup/plugin-typescript@8.3.3 @rollup/plugin-commonjs rollup-plugin-dts tslib --save-dev
 ```
 
-- <h4>@rollup/plugin-node-resolve - Uses the node resolution algorithm for modules</h4>
-- <h4>@rollup/plugin-typescript@8.3.3  - Teaches rollup how to process Typescript files</h4>
-- <h4>@rollup/plugin-commonjs - Converts commonjs modules to ES6 modules</h4>
-- <h4>rollup-plugin-dts - rollup your .d.ts files</h4>
-- <h4>tslib - peer dependency of rollup-plugin-typescript.</h4>
+- <p>@rollup/plugin-node-resolve - Uses the node resolution algorithm for modules</p>
+- <p>@rollup/plugin-typescript@8.3.3  - Teaches rollup how to process Typescript files</p>
+- <p>@rollup/plugin-commonjs - Converts commonjs modules to ES6 modules</p>
+- <p>rollup-plugin-dts - rollup your .d.ts files</p>
+- <p>tslib - peer dependency of rollup-plugin-typescript.</p>
 
 <br/>
 
