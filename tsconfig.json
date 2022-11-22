@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    // Default
+    "target": "es5",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true,
+
+    // Added
+    // Transform JSX into React code
+    "jsx": "react",
+    // Generate modern JS modules for our library
+    "module": "ESNext",
+    // Output a .d.ts file for our library types
+    "declaration": true,
+    // Where to place the .d.ts files
+    "declarationDir": "types",
+    // Mapping JS code back to its TS file origins for debugging
+    "sourceMap": true,
+    // Directory where the project will be generated
+    "outDir": "dist",
+    // Follow node.js rules for finding modules
+    "moduleResolution": "node",
+    // Assumes default exports if none are created manually
+    "allowSyntheticDefaultImports": true,
+    // Don't generate JS (rollup will do that) only export type declarations
+    "emitDeclarationOnly": true
+  }
+}
