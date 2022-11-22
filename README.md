@@ -2,13 +2,9 @@
 
 <p>This project has a setup of creating and publishing own custom React component library</p>
 
-<br/>
-
 # Creating components
 
 <p>Because we are creating a library, we are going to create index files for each tier, and export our components from each one to make it as easy as possible for the people using our library to import them.</p>
-
-<br/>
 
 ```
 ├── src
@@ -21,8 +17,6 @@
 ├── package.json
 └── package-lock.json
 ```
-
-<br/>
 
 <mark> src/components/Button/Button.tsx </mark>
 
@@ -53,7 +47,7 @@ npx tsc --init
 <p>You may notice depending on your IDE that immediately after initializing you begin to get errors in your project.</p>
 <p> There are two reasons for that: the first is that Typescript isn't configuration to understand React by default, and the second is that we haven't defined our method for handling modules yet: so it may not understand how to manage all of our exports.
 </p>
-<br/>
+
 <mark>To fix this we are going to add the following values to tsconfig.json:</mark>
 
 ```
@@ -81,18 +75,13 @@ npx tsc --init
 
 ```
 
-<br/>
-
 # Adding Rollup
 
 > <p> It's very similar to webpack in that it is a tool for bundling individual Javascript modules into a single source that a browser is better able to understand.</p>
 
 <p>Typically webpack is used for bundling applications while rollup is particularly suited for bundling libraries </p>
-<br/>
 
 <p>Rollup uses a plugin ecosystem. By design rollup does not know how to do everything, it relies on plugins installed individually to add the functionality that you need.</p>
-
-<br/>
 
 ```
 npm install rollup @rollup/plugin-node-resolve @rollup/plugin-typescript@8.3.3 @rollup/plugin-commonjs rollup-plugin-dts tslib --save-dev
@@ -104,11 +93,7 @@ npm install rollup @rollup/plugin-node-resolve @rollup/plugin-typescript@8.3.3 @
 - <p>rollup-plugin-dts - rollup your .d.ts files</p>
 - <p>tslib - peer dependency of rollup-plugin-typescript.</p>
 
-<br/>
-
 > To configure how rollup is going to bundle our library we need to create a configuration file in the root of our project:
-
-<br/>
 
 <mark>rollup.config.js</mark>
 
