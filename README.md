@@ -1,11 +1,16 @@
-### Introduction
+# Introduction
 
-This project has a setup of creating and publishing own custom React component library
+<h3>This project has a setup of creating and publishing own custom React component library</h3>
 
-### Creating components
+<br/>
 
-Because we are creating a library, we are going to create index files for each tier, and export our components from each one to make it as easy as possible for the people using our library to import them.
+# Creating components
 
+<h3>Because we are creating a library, we are going to create index files for each tier, and export our components from each one to make it as easy as possible for the people using our library to import them.</h3>
+
+<br/>
+
+```
 ├── src
 │ ├── components
 | │ ├── Button
@@ -15,8 +20,11 @@ Because we are creating a library, we are going to create index files for each t
 │ └── index.ts
 ├── package.json
 └── package-lock.json
+```
 
-==src/components/Button/Button.tsx==
+<br/>
+
+<mark> src/components/Button/Button.tsx </mark>
 
 ```
 import React from "react";
@@ -33,17 +41,20 @@ export default Button;
 
 ```
 
-### Adding Typescript
+## Adding Typescript
 
 ```
 npx tsc --init
 
 ```
 
-That will create a tsconfig.json file for us in the root of our project that contains all the default configuration options for Typescript.
-You may notice depending on your IDE that immediately after initializing you begin to get errors in your project. There are two reasons for that: the first is that Typescript isn't configuration to understand React by default, and the second is that we haven't defined our method for handling modules yet: so it may not understand how to manage all of our exports.
+> <h3>That will create a tsconfig.json file for us in the root of our project that contains all the default configuration options for Typescript.</h3>
 
-==To fix this we are going to add the following values to tsconfig.json:==
+<h3>You may notice depending on your IDE that immediately after initializing you begin to get errors in your project.</h3>
+<h3> There are two reasons for that: the first is that Typescript isn't configuration to understand React by default, and the second is that we haven't defined our method for handling modules yet: so it may not understand how to manage all of our exports.
+</h3>
+<br/>
+<mark>To fix this we are going to add the following values to tsconfig.json:</mark>
 
 ```
 {
@@ -68,4 +79,72 @@ You may notice depending on your IDE that immediately after initializing you beg
   }
 }
 
+```
+
+<br/>
+
+# Adding Rollup
+
+> <h3> It's very similar to webpack in that it is a tool for bundling individual Javascript modules into a single source that a browser is better able to understand.</h3>
+> <br/>
+
+<h3>Typically webpack is used for bundling applications while rollup is particularly suited for bundling libraries </h3>
+<br/>
+
+<h3>Rollup uses a plugin ecosystem. By design rollup does not know how to do everything, it relies on plugins installed individually to add the functionality that you need.</h3>
+
+<br/>
+
+```
+npm install rollup @rollup/plugin-node-resolve @rollup/plugin-typescript@8.3.3 @rollup/plugin-commonjs rollup-plugin-dts tslib --save-dev
+```
+
+- <h4>@rollup/plugin-node-resolve - Uses the node resolution algorithm for modules</h4>
+- <h4>@rollup/plugin-typescript@8.3.3  - Teaches rollup how to process Typescript files</h4>
+- <h4>@rollup/plugin-commonjs - Converts commonjs modules to ES6 modules</h4>
+- <h4>rollup-plugin-dts - rollup your .d.ts files</h4>
+- <h4>tslib - peer dependency of rollup-plugin-typescript.</h4>
+
+<br/>
+
+> To configure how rollup is going to bundle our library we need to create a configuration file in the root of our project:
+
+<br/>
+
+<mark>rollup.config.js</mark>
+
+```
+import resolve from "@rollup/plugin-node-resolve";
+import commonjs from "@rollup/plugin-commonjs";
+import typescript from "@rollup/plugin-typescript";
+import dts from "rollup-plugin-dts";
+import packageJson from "./package.json" assert { type: "json" };
+
+export default [
+  {
+    input: "src/index.ts",
+    output: [
+      {
+        file: packageJson.main,
+        format: "cjs",
+        sourcemap: true,
+      },
+      {
+        file: packageJson.module,
+        format: "esm",
+        sourcemap: true,
+      },
+    ],
+    plugins: [
+      resolve(),
+      commonjs(),
+      typescript({ tsconfig: "./tsconfig.json" }),
+    ],
+  },
+  {
+    input: "dist/esm/types/index.d.ts",
+    output: [{ file: "dist/index.d.ts", format: "esm" }],
+    plugins: [dts()],
+  },
+];
 ```
