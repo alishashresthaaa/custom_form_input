@@ -1,12 +1,12 @@
 # Introduction
 
-<h3>This project has a setup of creating and publishing own custom React component library</h3>
+<p>This project has a setup of creating and publishing own custom React component library</p>
 
 <br/>
 
 # Creating components
 
-<h3>Because we are creating a library, we are going to create index files for each tier, and export our components from each one to make it as easy as possible for the people using our library to import them.</h3>
+<p>Because we are creating a library, we are going to create index files for each tier, and export our components from each one to make it as easy as possible for the people using our library to import them.</p>
 
 <br/>
 
@@ -48,11 +48,11 @@ npx tsc --init
 
 ```
 
-> <h3>That will create a tsconfig.json file for us in the root of our project that contains all the default configuration options for Typescript.</h3>
+> <p>That will create a tsconfig.json file for us in the root of our project that contains all the default configuration options for Typescript.</p>
 
-<h3>You may notice depending on your IDE that immediately after initializing you begin to get errors in your project.</h3>
-<h3> There are two reasons for that: the first is that Typescript isn't configuration to understand React by default, and the second is that we haven't defined our method for handling modules yet: so it may not understand how to manage all of our exports.
-</h3>
+<p>You may notice depending on your IDE that immediately after initializing you begin to get errors in your project.</p>
+<p> There are two reasons for that: the first is that Typescript isn't configuration to understand React by default, and the second is that we haven't defined our method for handling modules yet: so it may not understand how to manage all of our exports.
+</p>
 <br/>
 <mark>To fix this we are going to add the following values to tsconfig.json:</mark>
 
@@ -85,13 +85,13 @@ npx tsc --init
 
 # Adding Rollup
 
-> <h3> It's very similar to webpack in that it is a tool for bundling individual Javascript modules into a single source that a browser is better able to understand.</h3>
+> <p> It's very similar to webpack in that it is a tool for bundling individual Javascript modules into a single source that a browser is better able to understand.</p>
 > <br/>
 
-<h3>Typically webpack is used for bundling applications while rollup is particularly suited for bundling libraries </h3>
+<p>Typically webpack is used for bundling applications while rollup is particularly suited for bundling libraries </p>
 <br/>
 
-<h3>Rollup uses a plugin ecosystem. By design rollup does not know how to do everything, it relies on plugins installed individually to add the functionality that you need.</h3>
+<p>Rollup uses a plugin ecosystem. By design rollup does not know how to do everything, it relies on plugins installed individually to add the functionality that you need.</p>
 
 <br/>
 
