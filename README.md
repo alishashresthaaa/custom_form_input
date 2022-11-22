@@ -35,7 +35,7 @@ export default Button;
 
 ```
 
-## Adding Typescript
+# Adding Typescript
 
 ```
 npx tsc --init
